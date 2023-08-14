@@ -30,6 +30,11 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-artifact
+        path: build/libs/my-app-1.0-SNAPSHOT.jar
       
   publish-image:
   
@@ -39,7 +44,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
+
+    - uses: actions/download-artifact@master
+      with:
+        name: my-artifact
+        path: build/libs/my-app-1.0-SNAPSHOT.jar
     
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
