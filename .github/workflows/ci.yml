@@ -31,7 +31,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
         path: build/libs/my-app-1.0-SNAPSHOT.jar
@@ -44,9 +44,9 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
 
-    - uses: actions/download-artifact@master
+    - uses: actions/download-artifact@v3
       with:
         name: my-artifact
         path: build/libs/my-app-1.0-SNAPSHOT.jar
