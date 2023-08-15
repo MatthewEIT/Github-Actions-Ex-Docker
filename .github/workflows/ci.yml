@@ -34,7 +34,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
-        path: build/libs/my-app-1.0-SNAPSHOT.jar
+        path: ${GITHUB_WORKSPACE}/build/libs/my-app-1.0-SNAPSHOT.jar
       
   publish-image:
   
@@ -49,7 +49,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: my-artifact
-        path: build/libs/my-app-1.0-SNAPSHOT.jar
+        path: ${GITHUB_WORKSPACE}/build/libs/my-app-1.0-SNAPSHOT.jar
     
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
