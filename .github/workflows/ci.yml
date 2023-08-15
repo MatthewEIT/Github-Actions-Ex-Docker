@@ -36,10 +36,6 @@ jobs:
       with:
         name: my-artifact
         path: ${{ github.workspace }}/build/libs
-
-    - name: Printing directory
-      run: ls -a
-    
       
   publish-image:
   
