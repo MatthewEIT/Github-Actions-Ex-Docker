@@ -30,28 +30,6 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
-
-    - name: Uploading Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: my-artifact
-        path: ${{ github.workspace }}/build/libs
-      
-  publish-image:
-  
-    needs: build-java
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Downloading Artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: my-artifact
-        path: ${{ github.workspace }}/build/libs
     
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
